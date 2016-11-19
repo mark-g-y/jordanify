@@ -33,10 +33,10 @@ def get_faces(imagepath):
 
 def apply_jordans(image, jordan, faces):
     for face in faces:
-        width = (int)(face['width'] * 1.0)
-        height = (int)(face['height'] * 1.3)
+        width = (int)(face['width'] * 1.1)
+        height = (int)(face['height'] * 1.4)
         jordan = jordan.resize((width, height), Image.ANTIALIAS)
-        image.paste(jordan, (face['x'], face['y']), jordan)
+        image.paste(jordan, (face['x'], face['y'] - (int)(height * 0.2)), jordan)
 
 
 if __name__ == '__main__':

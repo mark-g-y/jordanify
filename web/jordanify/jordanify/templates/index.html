@@ -1,0 +1,169 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Color Flat Design - Bootstrap Theme</title>
+
+  <!-- CSS includes -->
+  <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet" type="text/css">
+  <link href="{% static 'fonts/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/theme.css' %}" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="#" title="Color Flat Design Bootstrap Theme">
+        <img class="img-responsive" src="{% static 'images/jordan.png' %}" style="height:30px; margin-top:10px;" alt="Jordan Face" />
+      </a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="info"><a href="#how-to-use" class="smooth-scroll">How to Use</a></li>
+        <li class="info"><a href="#team" class="smooth-scroll">Team</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<!-- Carousel --> 
+<div id="theme-carousel" class="carousel slide bg-carousel" data-ride="carousel">
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-sm-6 text-center">
+            <div class="clearfix hidden-xs" style="height:100px;"></div>
+            <h1 style="margin-top:30px;">Jordanify</h1>
+            <p>Automatically applies the Jordan meme to any face detected in an uploaded image.</p>
+            <input type="file" id="imgupload" style="visibility:hidden" />
+            <p><a class="btn btn-primary btn-lg" onclick="jordanifyImage()">Upload Image</a></p>
+            <p style="margin-bottom:100px;"></p>
+          </div>
+          <div class="col-md-6 col-sm-6 hidden-xs">
+            <div>
+            <img class="img-responsive" style="height:400px; padding:20px; margin:auto" src="{% static 'images/jordan.png' %}" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-about bg-info">
+  <div class="container">
+    <h1 id="how-to-use" class="text-center">How to Use</h1>
+    <br />
+    <p class="text-center">
+      Simply upload an image, and a Jordan meme will automatically be applied to faces detected in that image.
+    </p>
+    <br /><br /><br />
+    <div class="row">
+      <div class="col-md-6 text-center">
+        <div class="img-container">
+          <img class="img-responsive" src="images/branding.png" />
+        </div>
+        <h3>Before</h3>
+      </div>
+      <div class="col-md-6 text-center">
+        <div class="img-container">
+          <img class="img-responsive" src="images/design.png" />
+        </div>
+        <h3>After</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-team bg-warning">
+  <div class="container">
+    <h1 id="team" class="text-center">TEAM</h1>
+    <br /><br /><br />
+    <div class="row">
+      <div class="col-md-2 col-md-offset-5 text-center">
+        <img src="{% static 'images/jordan.png' %}" class="img-responsive" />
+        <br />
+        <p><b>Michael Jordan</b></p>
+        <p>Why am I even on this website...</p>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix hidden-xs" style="width:100%; height:50px;"></div>
+</div>
+
+<footer id="subfooter" class="clearfix">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h4>CORPORATE</h4>
+        <p><span class="fa fa-globe"></span>&nbsp;&nbsp;&nbsp;645 Fifth Avenue, New York, NY 10022, USA</p>
+        <p><span class="fa fa-phone"></span>&nbsp;&nbsp;&nbsp;+1 212 407 8000</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<footer id="footer" class="clearfix">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <!-- Footer here for aesthetic purposes only -->
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.mixitup.min.js' %}"></script>
+<link href="{% static 'css/magnific-popup.css' %}" rel="stylesheet">
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/theme.js"></script>
+
+<script>
+function jordanifyImage() {
+  $('#imgupload').trigger('click');
+}
+
+$('#imgupload').change(function() {
+  var formData = new FormData();
+  formData.append('image', $('#imgupload').prop('files')[0]);
+
+  $.ajax({
+    url: 'api/jordanify',
+    type: 'POST',
+    processData: false,
+    contentType: false,
+    dataType : 'json',
+    data: formData
+  });
+});
+
+</script>
+
+</body>
+</html>

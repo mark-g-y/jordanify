@@ -119,3 +119,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = os.path.join(BASE_DIR, 'jordanify/static/')
+
+CONTENT_TYPES = ['image']
+MAX_UPLOAD_SIZE = "10485760"

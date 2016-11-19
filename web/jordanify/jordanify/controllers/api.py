@@ -1,15 +1,11 @@
-import random
 from django.http import JsonResponse
+
+from jordanify.lib import upload
 
 
 def jordanify_image(request):
-    save_file(request.FILES['image'])
-    return JsonResponse({'status':'success'})
-
-
-def save_file(file):
-    file_type = file.content_type.split('/')[1]
-    name = random.getrandbits(128)
-    with open('jordanify/static/uploads/' + str(name) + '.' + file_type, 'wb+') as destination:
-        for chunk in file.chunks():
-            destination.write(chunk)
+    file = request.FILES['image']
+    if not upload.validate(file):
+        return JsonResponse({'status':'error', 'description':'Either image is too large or not an image'})
+    filepath = upload.save_file(request.FILES['image'])
+    return JsonResponse({'status':'success', 'filepath':filepath})

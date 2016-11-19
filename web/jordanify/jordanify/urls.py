@@ -14,9 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from django.views.static import serve
+
+import settings
 from controllers import index, api
 
 urlpatterns = [
     url('api/jordanify', api.jordanify_image),
+    url(r'^static/(.*)$', serve, {'document_root': settings.STATIC_URL}),
     url('', index.index)
 ]

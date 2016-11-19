@@ -1,3 +1,5 @@
+from django.http import JsonResponse
+
 
 def jordanify_image(request):
-    return ''
+    return JsonResponse({'foo':'bar'})

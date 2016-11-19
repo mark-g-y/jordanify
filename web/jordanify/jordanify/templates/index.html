@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Color Flat Design - Bootstrap Theme</title>
+  <title>Jordanify</title>
 
   <!-- CSS includes -->
   <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -152,6 +152,7 @@ function jordanifyImage() {
 $('#imgupload').change(function() {
   var formData = new FormData();
   formData.append('image', $('#imgupload').prop('files')[0]);
+  formData.append("csrfmiddlewaretoken", "{{csrf_token }}");
 
   $.ajax({
     url: 'api/jordanify',
@@ -159,7 +160,13 @@ $('#imgupload').change(function() {
     processData: false,
     contentType: false,
     dataType : 'json',
-    data: formData
+    data: formData,
+    success:function(response) {
+      console.log(response);
+    },
+    error:function(response) {
+      console.log(response);
+    }
   });
 });
 

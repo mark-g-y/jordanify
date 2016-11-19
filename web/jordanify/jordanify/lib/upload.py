@@ -12,9 +12,9 @@ def validate(file):
 
 def save_file(file):
     file_type = file.content_type.split('/')[1]
-    name = str(random.getrandbits(128)) + '.' + file_type
-    with open('jordanify/static/uploads/' + name, 'wb+') as destination:
+    path = str(random.getrandbits(128)) + '.' + file_type
+    with open(settings.STATIC_URL + 'uploads/' + path, 'wb+') as destination:
         for chunk in file.chunks():
             destination.write(chunk)
-    return 'static/uploads/' + name
+    return settings.STATIC_REL_URL + 'uploads/' + path
             

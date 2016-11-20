@@ -43,24 +43,17 @@ def apply_jordans(image, jordan, faces):
     return image
 
 
-def jordanify(filepath, jordan):
-    jordan = Image.open(settings.STATIC_URL + 'images/jordan.png')
+def jordanify(filepath, jordanpath):
+    jordan = Image.open(jordanpath)
     image = Image.open(filepath)
 
     faces = get_faces(filepath)
     image = apply_jordans(image, jordan, faces)
 
-    image.save(filepath)
-
-    return filepath
+    return image
 
 
 if __name__ == '__main__':
     args = get_args()
-
-    jordan = Image.open(args.jordan)
-    image = Image.open(str(args.image))
-
-    faces = get_faces(str(args.image))
-    image = apply_jordans(image, jordan, faces)
+    image = jordanify(str(args.image), args.jordan)
     image.show()

@@ -9,6 +9,8 @@ def jordanify_image(request):
     if not upload.validate(file):
         return JsonResponse({'status':'error', 'description':'Either image is too large or not an image'})
     filename = upload.save_file(request.FILES['image'])
-    jordan.jordanify(settings.STATIC_UPLOAD_URL + filename, settings.STATIC_URL + 'jordan.png')
+    filepath = settings.STATICFILES_DIRS[0] + 'uploads/' + filename
+    image = jordan.jordanify(filepath, settings.STATICFILES_DIRS[0] + 'images/jordan.png')
+    image.save(filepath)
 
-    return JsonResponse({'status':'success', 'filepath':settings.STATIC_REL_UPLOAD_URL + filename})
+    return JsonResponse({'status':'success', 'filepath':settings.STATIC_URL + 'uploads/' + filename})

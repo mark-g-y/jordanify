@@ -1,5 +1,5 @@
 from PIL import Image
-import requests
+from requests_futures.sessions import FuturesSession
 import argparse
 
 from jordanify import settings
@@ -28,7 +28,8 @@ def get_faces(imagepath):
     headers = {
         'X-Mashape-Key': 'fV0GgxeAUSmshfE4aN38Q6MKpliDp1gJoxbjsnepusXS2CnRt3'}
     files = {'image': open(imagepath, 'rb')}
-    r = requests.post(url, headers=headers, files=files)
+    session = FuturesSession()
+    r = session.post(url, headers=headers, files=files).result()
 
     return r.json().get('faces')
 
